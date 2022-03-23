@@ -9,10 +9,11 @@ public class PlayerController : MonoBehaviour
     float fireInput;
     float boundX = 10.7f;
     float boundDown = -4.8f;
-    float maxHealth = 5f;
+    float maxHealth = 10f;
     float health;
 
     [SerializeField] float speed;
+    [SerializeField] HealthBar playerHealthBarScript;
     Rigidbody2D playerRb;
     ObjectPool objectPool;
 
@@ -22,6 +23,8 @@ public class PlayerController : MonoBehaviour
         playerRb = GetComponent<Rigidbody2D>();
         objectPool = ObjectPool.Instance;
         health = maxHealth;
+
+        playerHealthBarScript.UpdateHealthBar(maxHealth, health);
     }
 
     // Update is called once per frame
@@ -74,5 +77,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log(health + "/" + maxHealth);
             other.gameObject.SetActive(false);
         }
+
+        playerHealthBarScript.UpdateHealthBar(maxHealth, health);
     }
 }
