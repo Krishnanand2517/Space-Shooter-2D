@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] private Image playerHealthBar;
+    [SerializeField] private Image healthBar;
     [SerializeField] private float changeSpeed = 2f;
 
     private float target = 1f;
@@ -13,8 +13,8 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-        playerHealthBar.fillAmount = Mathf.MoveTowards(playerHealthBar.fillAmount, target, changeSpeed * Time.deltaTime);
-        playerHealthBar.color = healthColor;
+        healthBar.fillAmount = Mathf.MoveTowards(healthBar.fillAmount, target, changeSpeed * Time.deltaTime);
+        healthBar.color = healthColor;
     }
 
     public void UpdateHealthBar (float maxHealth, float currentHealth)

@@ -38,7 +38,7 @@ public class Bullet : MonoBehaviour
 
         else if (other.tag == "Enemy"){
             enemyController = other.GetComponent<EnemyController>();
-            enemyController.enemyHealth -= 1f;
+            enemyController.DamageEnemy(1f);
             gameObject.SetActive(false);
         }
     }

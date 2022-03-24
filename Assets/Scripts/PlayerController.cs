@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float speed;
     [SerializeField] HealthBar playerHealthBarScript;
+    private EnemyController enemyScript;
     Rigidbody2D playerRb;
     ObjectPool objectPool;
 
@@ -68,8 +69,8 @@ public class PlayerController : MonoBehaviour
         else if (other.tag == "Enemy"){
             health = Mathf.Clamp(health - 1f, 0, maxHealth);
             Debug.Log(health + "/" + maxHealth);
-            EnemyController enemyScript = other.GetComponent<EnemyController>();
-            enemyScript.enemyHealth -= 1f;
+            enemyScript = other.GetComponent<EnemyController>();
+            enemyScript.DamageEnemy(1f);
         }
 
         else if (other.tag == "EnemyBullet"){
