@@ -20,6 +20,11 @@ public class HealthBar : MonoBehaviour
     public void UpdateHealthBar (float maxHealth, float currentHealth)
     {
         target = currentHealth / maxHealth;
-        healthColor = Color.Lerp(Color.red, Color.green, (currentHealth/maxHealth));
+        healthColor = Color.Lerp(Color.red, Color.green, target);
+    }
+
+    public void HideHealthBar()
+    {
+        healthColor.a = 0;
     }
 }

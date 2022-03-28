@@ -12,14 +12,17 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float enemySpeed = 3;
     [SerializeField] private HealthBar enemyHealthBarScript;
 
-    GameObject player;
-    Rigidbody2D enemyRb;
-    float boundX = 11f;
+    private GameObject player;
+    private Rigidbody2D enemyRb;
+    private float boundX = 11f;
+    private float healthBarDisplayTime = 2.5f;
+    private float healthBarDisplayTimer;
 
     // Start is called before the first frame update
     void Start()
     {
         enemyHealth = enemyMaxHealth;
+        healthBarDisplayTimer = 0f;
         player = GameObject.Find("Player");
         enemyRb = GetComponent<Rigidbody2D>();
         InvokeRepeating("MoveEnemy", 0.5f, 1.5f);
@@ -28,8 +31,15 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        healthBarDisplayTimer -= Time.deltaTime;
+        
         if (enemyHealth <= 0){
             Destroy(gameObject);
+        }
+
+        if (healthBarDisplayTimer <= 0){
+            healthBarDisplayTimer = 0f;
+            enemyHealthBarScript.HideHealthBar();
         }
     }
 
@@ -47,6 +57,7 @@ public class EnemyController : MonoBehaviour
     public void DamageEnemy(float damage)
     {
         enemyHealth -= damage;
+        healthBarDisplayTimer = healthBarDisplayTime;
         enemyHealthBarScript.UpdateHealthBar(enemyMaxHealth, enemyHealth);
     }
 }

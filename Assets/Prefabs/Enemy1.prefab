@@ -147,10 +147,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e055b3cceb837340bb3b56e6d4cc9a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyMaxHealth: 2
   enemyHealth: 2
   startShootingAfter: 1
   maxBulletsInARow: 3
   enemySpeed: 2
+  enemyHealthBarScript: {fileID: 6341191593558246895}
 --- !u!114 &1898789368846628621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -179,7 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767392f0a8d2a844d9ce9de9fb0d9080, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealthBar: {fileID: 4455060314011455942}
+  healthBar: {fileID: 4455060314011455942}
   changeSpeed: 2
 --- !u!1 &3074650522048236579
 GameObject:
