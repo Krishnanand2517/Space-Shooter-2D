@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    private Meteors meteorScript;
     private Rigidbody2D bulletRb;
     private GameObject player;
     private EnemyController enemyController;
@@ -18,6 +19,7 @@ public class Bullet : MonoBehaviour
     void Awake()
     {
         bulletRb = GetComponent<Rigidbody2D>();
+        meteorScript = GameManager.instance.GetComponent<Meteors>();
         player = GameObject.Find("Player");
     }
 
@@ -32,7 +34,7 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "Meteor"){
-            Destroy(other.gameObject);
+            meteorScript.DestroyMeteor(other.gameObject);
             gameObject.SetActive(false);
         }
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public int score = 10;
     public float enemyMaxHealth = 2f;
     public float enemyHealth;
     public float startShootingAfter = 1f;
@@ -35,6 +36,7 @@ public class EnemyController : MonoBehaviour
         
         if (enemyHealth <= 0){
             Destroy(gameObject);
+            GameManager.instance.playerScore += score;
         }
 
         if (healthBarDisplayTimer <= 0){

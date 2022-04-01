@@ -14,11 +14,12 @@ public class GameManager : MonoBehaviour
     #endregion
     
     public bool gameOver = false;
+    public int playerScore;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerScore = 0;
     }
 
     // Update is called once per frame

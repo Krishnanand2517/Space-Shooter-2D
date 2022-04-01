@@ -7,6 +7,7 @@ public class Meteors : MonoBehaviour
     public GameObject[] meteors;
     public GameObject player;
 
+    [SerializeField] private int meteorScore = 5;
     private GameObject meteorObject;
     private Rigidbody2D meteorRb;
     private int meteorNum;
@@ -53,5 +54,11 @@ public class Meteors : MonoBehaviour
         meteorRb = meteorObject.GetComponent<Rigidbody2D>();
         meteorRb.AddTorque(torque);
         meteorRb.AddForce(meteorForce);
+    }
+
+    public void DestroyMeteor (GameObject meteor)
+    {
+        Destroy(meteor);
+        GameManager.instance.playerScore += meteorScore;
     }
 }

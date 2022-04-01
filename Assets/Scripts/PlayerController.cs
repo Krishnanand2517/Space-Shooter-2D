@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] float speed;
     [SerializeField] HealthBar playerHealthBarScript;
+    private Meteors meteorScript;
     private EnemyController enemyScript;
     Rigidbody2D playerRb;
     ObjectPool objectPool;
@@ -22,6 +23,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playerRb = GetComponent<Rigidbody2D>();
+        meteorScript = GameManager.instance.GetComponent<Meteors>();
         objectPool = ObjectPool.Instance;
         health = maxHealth;
 
@@ -63,7 +65,7 @@ public class PlayerController : MonoBehaviour
         if (other.tag == "Meteor"){
             health = Mathf.Clamp(health - 1f, 0, maxHealth);
             Debug.Log(health + "/" + maxHealth);
-            Destroy(other.gameObject);
+            meteorScript.DestroyMeteor(other.gameObject);
         }
 
         else if (other.tag == "Enemy"){
