@@ -15,11 +15,13 @@ public class GameManager : MonoBehaviour
     
     public bool gameOver = false;
     public int playerScore;
+    public int enemiesDestroyed;
 
     // Start is called before the first frame update
     void Start()
     {
         playerScore = 0;
+        enemiesDestroyed = 0;
     }
 
     // Update is called once per frame

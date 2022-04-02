@@ -37,6 +37,7 @@ public class EnemyController : MonoBehaviour
         if (enemyHealth <= 0){
             Destroy(gameObject);
             GameManager.instance.playerScore += score;
+            GameManager.instance.enemiesDestroyed += 1;
         }
 
         if (healthBarDisplayTimer <= 0){
