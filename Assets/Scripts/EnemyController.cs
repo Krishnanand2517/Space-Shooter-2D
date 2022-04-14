@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     public float enemyHealth;
     public float startShootingAfter = 1f;
     public int maxBulletsInARow = 3;
+    public bool isActive;
 
     [SerializeField] private float enemySpeed = 3;
     [SerializeField] private HealthBar enemyHealthBarScript;
@@ -27,12 +28,17 @@ public class EnemyController : MonoBehaviour
         player = GameObject.Find("Player");
         enemyRb = GetComponent<Rigidbody2D>();
         InvokeRepeating("MoveEnemy", 0.5f, 1.5f);
+        isActive = false;
     }
 
     // Update is called once per frame
     void Update()
     {
         healthBarDisplayTimer -= Time.deltaTime;
+
+        if (transform.position.y - player.transform.position.y < 10){
+            isActive = true;
+        }
         
         if (enemyHealth <= 0){
             Destroy(gameObject);
@@ -48,6 +54,10 @@ public class EnemyController : MonoBehaviour
 
     void MoveEnemy()
     {
+        if (!isActive){
+            return;
+        }
+
         float randomX = Random.Range(-boundX, boundX);
         float randomY = Random.Range(player.transform.position.y - 1.5f, player.transform.position.y + 7.5f);
         Vector2 randomPos = new Vector2(randomX, randomY);

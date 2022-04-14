@@ -62,6 +62,10 @@ public class EnemyObjectPool : MonoBehaviour
         if (GameManager.instance.gameOver){
             return;
         }
+
+        if (!enemyController.isActive){
+            return;
+        }
         
         timer -= Time.deltaTime;
         shootTimer -= Time.deltaTime;
