@@ -8,6 +8,7 @@ TagManager:
   - Meteor
   - Enemy
   - EnemyBullet
+  - LevelEnd
   layers:
   - Default
   - TransparentFX

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -79,6 +80,10 @@ public class PlayerController : MonoBehaviour
             health = Mathf.Clamp(health - 1f, 0, maxHealth);
             Debug.Log(health + "/" + maxHealth);
             other.gameObject.SetActive(false);
+        }
+
+        else if (other.tag == "LevelEnd"){
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         }
 
         playerHealthBarScript.UpdateHealthBar(maxHealth, health);
